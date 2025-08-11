@@ -7,8 +7,8 @@ namespace StudentManagementApp
     {
         private readonly StudentRepository _repository;
         private List<Student> _students;
-        private Panel contentPanel;
-        private Button activeMenuButton;
+        private Panel? contentPanel;
+        private Button? activeMenuButton;
 
         public MainForm()
         {
@@ -114,7 +114,7 @@ namespace StudentManagementApp
             return button;
         }
 
-        private void SetActiveMenuButton(Button button)
+        private void SetActiveMenuButton(Button? button)
         {
             if (activeMenuButton != null)
             {
@@ -145,15 +145,21 @@ namespace StudentManagementApp
         private void ShowDashboard()
         {
             SetActiveMenuButton(GetNavButtonByText("📊 Dashboard"));
-            contentPanel.Controls.Clear();
-            CreateDashboardView();
+            if (contentPanel != null)
+            {
+                contentPanel.Controls.Clear();
+                CreateDashboardView();
+            }
         }
 
         private void ShowAddStudentForm()
         {
             SetActiveMenuButton(GetNavButtonByText("➕ Add Student"));
-            contentPanel.Controls.Clear();
-            CreateAddStudentView();
+            if (contentPanel != null)
+            {
+                contentPanel.Controls.Clear();
+                CreateAddStudentView();
+            }
         }
 
         private Button GetNavButtonByText(string text)
@@ -176,6 +182,8 @@ namespace StudentManagementApp
 
         private void CreateDashboardView()
         {
+            if (contentPanel == null) return;
+
             // Header
             Label headerLabel = new Label
             {
@@ -190,7 +198,7 @@ namespace StudentManagementApp
             // Search panel
             Panel searchPanel = new Panel
             {
-                Size = new Size(contentPanel.Width - 40, 80),
+                Size = new Size(contentPanel!.Width - 40, 80),
                 Location = new Point(0, 50),
                 BackColor = UIHelper.SurfaceColor
             };
@@ -240,7 +248,7 @@ namespace StudentManagementApp
             // Action buttons panel
             Panel actionPanel = new Panel
             {
-                Size = new Size(contentPanel.Width - 40, 60),
+                Size = new Size(contentPanel!.Width - 40, 60),
                 Location = new Point(0, 150),
                 BackColor = UIHelper.SurfaceColor
             };
@@ -280,7 +288,7 @@ namespace StudentManagementApp
             // DataGridView
             DataGridView dgv = new DataGridView
             {
-                Size = new Size(contentPanel.Width - 40, contentPanel.Height - 280),
+                Size = new Size(contentPanel!.Width - 40, contentPanel.Height - 280),
                 Location = new Point(0, 230),
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom
             };
@@ -298,7 +306,7 @@ namespace StudentManagementApp
                 Font = UIHelper.DefaultFont,
                 ForeColor = UIHelper.TextSecondaryColor,
                 AutoSize = true,
-                Location = new Point(0, contentPanel.Height - 30)
+                Location = new Point(0, contentPanel!.Height - 30)
             };
             contentPanel.Controls.Add(statusLabel);
             this.lblStatus = statusLabel;
@@ -429,7 +437,7 @@ namespace StudentManagementApp
         }
 
         // Event handlers (keeping existing functionality)
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object? sender, EventArgs e)
         {
             try
             {
@@ -445,12 +453,12 @@ namespace StudentManagementApp
             }
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object? sender, EventArgs e)
         {
             EditSelectedStudent();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object? sender, EventArgs e)
         {
             DeleteSelectedStudent();
         }

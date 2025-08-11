@@ -6,7 +6,7 @@ namespace StudentManagementApp
     {
         private bool isDragging = false;
         private Point lastCursor;
-        private Form parentForm;
+        private Form? parentForm;
 
         public CustomTitleBar()
         {
@@ -40,7 +40,7 @@ namespace StudentManagementApp
                 Cursor = Cursors.Hand
             };
             btnMinimize.FlatAppearance.BorderSize = 0;
-            btnMinimize.Click += (s, e) => parentForm?.WindowState = FormWindowState.Minimized;
+            btnMinimize.Click += (s, e) => { if (parentForm != null) parentForm.WindowState = FormWindowState.Minimized; };
             this.Controls.Add(btnMinimize);
 
             // Add close button
@@ -56,7 +56,7 @@ namespace StudentManagementApp
                 Cursor = Cursors.Hand
             };
             btnClose.FlatAppearance.BorderSize = 0;
-            btnClose.Click += (s, e) => parentForm?.Close();
+            btnClose.Click += (s, e) => { if (parentForm != null) parentForm.Close(); };
             this.Controls.Add(btnClose);
 
             // Add hover effects
@@ -77,7 +77,7 @@ namespace StudentManagementApp
             parentForm = this.FindForm();
         }
 
-        private void CustomTitleBar_MouseDown(object sender, MouseEventArgs e)
+        private void CustomTitleBar_MouseDown(object? sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -86,7 +86,7 @@ namespace StudentManagementApp
             }
         }
 
-        private void CustomTitleBar_MouseMove(object sender, MouseEventArgs e)
+        private void CustomTitleBar_MouseMove(object? sender, MouseEventArgs e)
         {
             if (isDragging && parentForm != null)
             {
@@ -96,7 +96,7 @@ namespace StudentManagementApp
             }
         }
 
-        private void CustomTitleBar_MouseUp(object sender, MouseEventArgs e)
+        private void CustomTitleBar_MouseUp(object? sender, MouseEventArgs e)
         {
             isDragging = false;
         }

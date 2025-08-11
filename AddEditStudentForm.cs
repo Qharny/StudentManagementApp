@@ -121,7 +121,7 @@ namespace StudentManagementApp
             txtAddress.Text = _student.Address;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnSave_Click(object? sender, EventArgs e)
         {
             if (!ValidateForm())
                 return;
@@ -233,7 +233,7 @@ namespace StudentManagementApp
             return isValid;
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object? sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             Close();
