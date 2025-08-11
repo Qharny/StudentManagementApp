@@ -9,6 +9,8 @@ namespace StudentManagementApp
         private List<Student> _students;
         private Panel? contentPanel;
         private Button? activeMenuButton;
+        private DataGridView? dgvStudents;
+        private Label? lblStatus;
 
         public MainForm()
         {
@@ -19,7 +21,7 @@ namespace StudentManagementApp
             ApplyModernDesign();
             InitializeNavigation();
             InitializeContentPanel();
-            LoadStudents();
+            ShowDashboard(); // This will create the dashboard and load students
         }
 
         private void ApplyModernDesign()
@@ -394,6 +396,8 @@ namespace StudentManagementApp
 
         private void LoadStudents()
         {
+            if (dgvStudents == null) return;
+            
             try
             {
                 _students = _repository.GetAllStudents();
@@ -417,6 +421,8 @@ namespace StudentManagementApp
 
         private void SearchStudents(string searchTerm)
         {
+            if (dgvStudents == null) return;
+            
             if (string.IsNullOrEmpty(searchTerm))
             {
                 LoadStudents();
@@ -473,7 +479,7 @@ namespace StudentManagementApp
 
         private void EditSelectedStudent()
         {
-            if (dgvStudents.CurrentRow == null)
+            if (dgvStudents?.CurrentRow == null)
             {
                 MessageBox.Show("Please select a student to edit.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -496,7 +502,7 @@ namespace StudentManagementApp
 
         private void DeleteSelectedStudent()
         {
-            if (dgvStudents.CurrentRow == null)
+            if (dgvStudents?.CurrentRow == null)
             {
                 MessageBox.Show("Please select a student to delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
