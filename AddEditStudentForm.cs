@@ -17,67 +17,7 @@ namespace StudentManagementApp
             _student = student;
             _isEditMode = student != null;
             
-            ApplyModernDesign();
             InitializeForm();
-        }
-
-        private void ApplyModernDesign()
-        {
-            // Apply modern form style
-            UIHelper.ApplyModernStyle(this);
-            this.Size = new Size(500, 600);
-            this.MinimumSize = new Size(500, 600);
-
-            // Add custom title bar
-            CustomTitleBar titleBar = new CustomTitleBar();
-            this.Controls.Add(titleBar);
-
-            // Create rounded form region
-            this.Region = UIHelper.GetRoundedRegion(this.Width, this.Height, UIHelper.CornerRadius);
-
-            // Apply styles to all controls
-            ApplyControlStyles();
-        }
-
-        private void ApplyControlStyles()
-        {
-            // Apply styles to all existing controls
-            foreach (Control control in this.Controls)
-            {
-                if (control is TextBox textBox)
-                {
-                    UIHelper.ApplyTextBoxStyle(textBox);
-                }
-                else if (control is ComboBox comboBox)
-                {
-                    UIHelper.ApplyComboBoxStyle(comboBox);
-                }
-                else if (control is DateTimePicker dateTimePicker)
-                {
-                    UIHelper.ApplyDateTimePickerStyle(dateTimePicker);
-                }
-                else if (control is Label label)
-                {
-                    UIHelper.ApplyLabelStyle(label);
-                }
-                else if (control is Button button)
-                {
-                    if (button == btnSave)
-                    {
-                        UIHelper.ApplyButtonStyle(button, true);
-                        UIHelper.CreateRoundedButton(button);
-                    }
-                    else if (button == btnCancel)
-                    {
-                        UIHelper.ApplyButtonStyle(button, false);
-                        UIHelper.CreateRoundedButton(button);
-                    }
-                }
-                else if (control is Panel panel)
-                {
-                    UIHelper.ApplyPanelStyle(panel);
-                }
-            }
         }
 
         private void InitializeForm()
@@ -121,7 +61,7 @@ namespace StudentManagementApp
             txtAddress.Text = _student.Address;
         }
 
-        private void btnSave_Click(object? sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateForm())
                 return;
@@ -233,7 +173,7 @@ namespace StudentManagementApp
             return isValid;
         }
 
-        private void btnCancel_Click(object? sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             Close();
