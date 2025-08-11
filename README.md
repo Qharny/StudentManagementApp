@@ -27,7 +27,7 @@ A comprehensive C# Windows Forms application for managing student records using 
 
 ## Technical Details
 
-- **Framework**: .NET 7.0 Windows Forms
+- **Framework**: .NET 8.0 Windows Forms
 - **Database**: SQLite (Microsoft.Data.Sqlite)
 - **Architecture**: Repository pattern with data access layer
 - **Validation**: Data annotations and custom validation
@@ -61,7 +61,7 @@ The application automatically creates a SQLite database file named `StudentManag
 ## Getting Started
 
 1. **Prerequisites**: 
-   - .NET 7.0 SDK
+   - .NET 8.0 SDK
    - Visual Studio 2022 or later (recommended)
 
 2. **Build and Run**:
@@ -97,7 +97,7 @@ The application automatically creates a SQLite database file named `StudentManag
 ## Development
 
 This application demonstrates:
-- Windows Forms development with .NET 7.0
+- Windows Forms development with .NET 8.0
 - SQLite database integration
 - Repository pattern implementation
 - Data validation and error handling

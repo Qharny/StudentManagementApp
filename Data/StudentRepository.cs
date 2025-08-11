@@ -174,7 +174,11 @@ namespace StudentManagementApp.Data
             command.Parameters.AddWithValue("@Address", student.Address ?? (object)DBNull.Value);
 
             command.ExecuteNonQuery();
-            return (int)connection.LastInsertRowId;
+            
+            // Get the last inserted row ID
+            var lastIdCommand = connection.CreateCommand();
+            lastIdCommand.CommandText = "SELECT last_insert_rowid()";
+            return Convert.ToInt32(lastIdCommand.ExecuteScalar());
         }
 
         public bool UpdateStudent(Student student)

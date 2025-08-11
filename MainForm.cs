@@ -156,7 +156,7 @@ namespace StudentManagementApp
             }
         }
 
-        private void DgvStudents_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvStudents_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
