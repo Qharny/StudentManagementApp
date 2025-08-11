@@ -1,6 +1,6 @@
 namespace StudentManagementApp
 {
-    partial class MainForm
+    partial class CustomTitleBar
     {
         /// <summary>
         /// Required designer variable.
@@ -30,20 +30,15 @@ namespace StudentManagementApp
         {
             this.SuspendLayout();
             // 
-            // MainForm
+            // CustomTitleBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 800);
-            this.Name = "MainForm";
-            this.Text = "Student Management System";
+            this.Name = "CustomTitleBar";
+            this.Size = new System.Drawing.Size(800, 40);
             this.ResumeLayout(false);
         }
 
         #endregion
-
-        // These will be created programmatically
-        private System.Windows.Forms.DataGridView dgvStudents;
-        private System.Windows.Forms.Label lblStatus;
     }
 } 
