@@ -28,6 +28,21 @@ namespace StudentManagementApp
             dgvStudents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvStudents.MultiSelect = false;
             dgvStudents.RowHeadersVisible = false;
+            
+            // Modern styling
+            dgvStudents.BackgroundColor = Color.White;
+            dgvStudents.BorderStyle = BorderStyle.None;
+            dgvStudents.GridColor = Color.LightGray;
+            dgvStudents.EnableHeadersVisualStyles = false;
+            dgvStudents.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(52, 73, 94);
+            dgvStudents.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvStudents.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dgvStudents.ColumnHeadersHeight = 40;
+            dgvStudents.RowTemplate.Height = 35;
+            dgvStudents.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 245, 245);
+            dgvStudents.DefaultCellStyle.Font = new Font("Segoe UI", 9F);
+            dgvStudents.DefaultCellStyle.SelectionBackColor = Color.FromArgb(52, 152, 219);
+            dgvStudents.DefaultCellStyle.SelectionForeColor = Color.White;
 
             // Add columns
             dgvStudents.Columns.Add(new DataGridViewTextBoxColumn

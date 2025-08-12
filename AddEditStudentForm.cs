@@ -24,6 +24,7 @@ namespace StudentManagementApp
         {
             // Set form title
             Text = _isEditMode ? "Edit Student" : "Add New Student";
+            lblFormTitle.Text = _isEditMode ? "Edit Student" : "Add New Student";
 
             // Initialize gender combo box
             cboGender.Items.AddRange(new string[] { "Male", "Female", "Other" });
